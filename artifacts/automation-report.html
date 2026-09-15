@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Automation Testing Report - ERP Web Application">
+
+    <title>
+        Automation Testing Report | Sivamurugan G
+    </title>
+
+
+    <!-- =====================================================
+         INTERNAL CSS
+         This file is completely standalone.
+         No external CSS file is required.
+         ===================================================== -->
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #0b0b0d;
+
+            color: #eeeeee;
+
+            line-height: 1.6;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           TOP NAVIGATION
+           ===================================================== */
+
+        .report-navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(11, 11, 13, 0.96);
+
+            border-bottom:
+                1px solid #25252a;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .nav-container {
+
+            min-height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .report-logo {
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .report-logo span {
+            color: #e53935;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 24px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            color: #bbbbbb;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .report-hero {
+
+            padding: 100px 0 80px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(229, 57, 53, 0.12),
+                    transparent 35%
+                );
+        }
+
+
+        .hero-label {
+
+            display: inline-block;
+
+            padding: 7px 14px;
+
+            border:
+                1px solid rgba(229, 57, 53, 0.45);
+
+            color: #ff5a57;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .report-hero h1 {
+
+            font-size: clamp(34px, 5vw, 60px);
+
+            line-height: 1.1;
+
+            margin-bottom: 18px;
+        }
+
+
+        .report-hero h1 span {
+            color: #e53935;
+        }
+
+
+        .report-hero-description {
+
+            max-width: 780px;
+
+            color: #aaaaaa;
+
+            font-size: 17px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .hero-meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .meta-tag {
+
+            padding: 9px 14px;
+
+            background: #151519;
+
+            border:
+                1px solid #29292f;
+
+            border-radius: 6px;
+
+            color: #cccccc;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+           ===================================================== */
+
+        .button-row {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+
+            margin-top: 30px;
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 12px 20px;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition:
+                transform 0.3s,
+                background 0.3s,
+                border-color 0.3s;
+        }
+
+
+        .btn:hover {
+
+            transform: translateY(-2px);
+        }
+
+
+        .primary-btn {
+
+            background: #e53935;
+
+            color: #ffffff;
+        }
+
+
+        .primary-btn:hover {
+
+            background: #c62828;
+        }
+
+
+        .secondary-btn {
+
+            border:
+                1px solid #38383f;
+
+            color: #dddddd;
+
+            background: #151519;
+        }
+
+
+        .secondary-btn:hover {
+
+            border-color: #e53935;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION
+           ===================================================== */
+
+        .section {
+
+            padding: 80px 0;
+
+            border-top:
+                1px solid #1d1d21;
+        }
+
+
+        .section-title {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-subtitle {
+
+            color: #888888;
+
+            margin-bottom: 35px;
+
+            max-width: 750px;
+        }
+
+
+        /* =====================================================
+           PROJECT INFORMATION
+           ===================================================== */
+
+        .overview-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .info-card {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            transition:
+                transform 0.3s,
+                border-color 0.3s;
+        }
+
+
+        .info-card:hover {
+
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(229, 57, 53, 0.5);
+        }
+
+
+        .info-card h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .info-card p {
+
+            color: #999999;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           TECHNOLOGY STACK
+           ===================================================== */
+
+        .tech-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .tech-card {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            padding: 22px;
+
+            border-radius: 10px;
+        }
+
+
+        .tech-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .tech-card p {
+
+            color: #909090;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+           ===================================================== */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .stat-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            width: 3px;
+
+            height: 100%;
+
+            background: #e53935;
+        }
+
+
+        .stat-label {
+
+            color: #888888;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .stat-value {
+
+            font-size: 30px;
+
+            font-weight: 700;
+        }
+
+
+        .stat-description {
+
+            color: #777777;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           PROGRESS
+           ===================================================== */
+
+        .progress-card {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 12px;
+
+            font-size: 14px;
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 9px;
+
+            background: #25252a;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 96%;
+
+            background: #e53935;
+
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           MODULE COVERAGE
+           ===================================================== */
+
+        .module-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .module-card {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .module-card h4 {
+
+            margin-bottom: 5px;
+        }
+
+
+        .module-card p {
+
+            color: #888888;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           EXECUTION TABLE
+           ===================================================== */
+
+        .table-controls {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .search-box {
+
+            flex: 1;
+
+            min-width: 240px;
+        }
+
+
+        .search-box input,
+        .filter-select {
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            background: #131316;
+
+            color: #eeeeee;
+
+            border:
+                1px solid #303037;
+
+            border-radius: 6px;
+
+            outline: none;
+        }
+
+
+        .search-box input:focus,
+        .filter-select:focus {
+
+            border-color: #e53935;
+        }
+
+
+        .filter-wrapper {
+
+            width: 180px;
+        }
+
+
+        .table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 10px;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            min-width: 1200px;
+
+            border-collapse: collapse;
+        }
+
+
+        th {
+
+            background: #18181c;
+
+            color: #eeeeee;
+
+            text-align: left;
+
+            padding: 14px;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+
+            border-bottom:
+                1px solid #303037;
+        }
+
+
+        td {
+
+            padding: 13px 14px;
+
+            color: #aaaaaa;
+
+            font-size: 13px;
+
+            border-bottom:
+                1px solid #222228;
+        }
+
+
+        tbody tr {
+
+            transition: background 0.2s;
+        }
+
+
+        tbody tr:hover {
+
+            background: #18181c;
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            padding: 4px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        .status-pass {
+
+            background: rgba(46, 125, 50, 0.15);
+
+            color: #66bb6a;
+        }
+
+
+        .status-fail {
+
+            background: rgba(229, 57, 53, 0.15);
+
+            color: #ff6b68;
+        }
+
+
+        .status-blocked {
+
+            background: rgba(255, 167, 38, 0.15);
+
+            color: #ffb74d;
+        }
+
+
+        /* =====================================================
+           FRAMEWORK STRUCTURE
+           ===================================================== */
+
+        .framework {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+        }
+
+
+        .framework-box {
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 10px;
+
+            padding: 25px;
+        }
+
+
+        .framework-box h3 {
+
+            margin-bottom: 15px;
+        }
+
+
+        .folder-tree {
+
+            font-family: Consolas, monospace;
+
+            color: #aaaaaa;
+
+            font-size: 13px;
+
+            line-height: 2;
+        }
+
+
+        .folder-tree span {
+
+            color: #e53935;
+        }
+
+
+        /* =====================================================
+           AUTOMATION APPROACH
+           ===================================================== */
+
+        .approach-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .approach-card {
+
+            padding: 22px;
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 9px;
+        }
+
+
+        .step-number {
+
+            display: inline-flex;
+
+            width: 32px;
+
+            height: 32px;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(229, 57, 53, 0.15);
+
+            color: #ff5a57;
+
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+
+        .approach-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .approach-card p {
+
+            color: #888888;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           CONCLUSION
+           ===================================================== */
+
+        .conclusion {
+
+            max-width: 850px;
+
+            background: #131316;
+
+            border:
+                1px solid #27272d;
+
+            border-radius: 10px;
+
+            padding: 30px;
+        }
+
+
+        .conclusion p {
+
+            color: #999999;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            border-top:
+                1px solid #25252a;
+
+            padding: 30px 0;
+
+            text-align: center;
+
+            color: #777777;
+
+            font-size: 13px;
+        }
+
+
+        footer span {
+            color: #e53935;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE DESIGN
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .dashboard-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .module-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .tech-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .approach-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+
+                flex-direction: column;
+
+                padding: 15px 0;
+            }
+
+
+            .nav-links {
+
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .overview-grid,
+            .framework,
+            .tech-grid,
+            .approach-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .module-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .report-hero {
+
+                padding-top: 65px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <header class="report-navbar">
+
+        <div class="container nav-container">
+
+            <div class="report-logo">
+
+                <span>QA</span>
+                Automation Report
+
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#overview">
+                        Overview
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#dashboard">
+                        Execution
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#framework">
+                        Framework
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#test-cases">
+                        Test Cases
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="report-hero">
+
+        <div class="container">
+
+            <span class="hero-label">
+                AUTOMATION TESTING REPORT
+            </span>
+
+
+            <h1>
+
+                ERP Web Application
+                <span>Automation</span>
+
+            </h1>
+
+
+            <p class="report-hero-description">
+
+                Professional Selenium WebDriver automation report
+                covering framework architecture, automated test
+                execution, regression coverage and ERP business
+                workflows using Java and TestNG.
+
+            </p>
+
+
+            <div class="hero-meta">
+
+                <span class="meta-tag">
+                    Prepared By: Sivamurugan G
+                </span>
+
+                <span class="meta-tag">
+                    Selenium WebDriver
+                </span>
+
+                <span class="meta-tag">
+                    Java
+                </span>
+
+                <span class="meta-tag">
+                    TestNG
+                </span>
+
+                <span class="meta-tag">
+                    Page Object Model
+                </span>
+
+                <span class="meta-tag">
+                    Maven
+                </span>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <a href="index.html"
+                   class="btn primary-btn">
+
+                    ← Back to Portfolio
+
+                </a>
+
+
+                <a href="#test-cases"
+                   class="btn secondary-btn">
+
+                    View Test Execution
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         OVERVIEW
+         ===================================================== -->
+
+    <section id="overview"
+             class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Project Overview
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Overview of the automation project, scope and
+                testing objectives.
+
+            </p>
+
+
+            <div class="overview-grid">
+
+
+                <div class="info-card">
+
+                    <h3>
+                        Automation Objective
+                    </h3>
+
+                    <p>
+
+                        Automate stable and repeatable ERP web
+                        application scenarios to reduce repetitive
+                        manual execution effort and improve
+                        regression test coverage.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>
+                        Automation Scope
+                    </h3>
+
+                    <p>
+
+                        Covers customer management, quotations,
+                        sales orders, invoicing, purchasing,
+                        inventory, finance, HR, production,
+                        logistics and service workflows.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>
+                        Testing Approach
+                    </h3>
+
+                    <p>
+
+                        The automation suite follows reusable
+                        test components, Page Object Model,
+                        TestNG execution and structured validation
+                        through assertions.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>
+                        Primary Goal
+                    </h3>
+
+                    <p>
+
+                        Provide maintainable and repeatable
+                        automated regression coverage for
+                        critical ERP business workflows.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TECHNOLOGY STACK
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Technology Stack
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Tools and technologies used within the automation
+                framework.
+
+            </p>
+
+
+            <div class="tech-grid">
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        Selenium WebDriver
+                    </h3>
+
+                    <p>
+                        Browser automation and web element interaction.
+                    </p>
+
+                </div>
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        Java
+                    </h3>
+
+                    <p>
+                        Programming language used for automation scripts.
+                    </p>
+
+                </div>
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        TestNG
+                    </h3>
+
+                    <p>
+                        Test execution, assertions, annotations and suites.
+                    </p>
+
+                </div>
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        Page Object Model
+                    </h3>
+
+                    <p>
+                        Maintains reusable page locators and actions.
+                    </p>
+
+                </div>
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        Maven
+                    </h3>
+
+                    <p>
+                        Dependency and project build management.
+                    </p>
+
+                </div>
+
+
+                <div class="tech-card">
+
+                    <h3>
+                        Git & GitHub
+                    </h3>
+
+                    <p>
+                        Version control and automation source management.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EXECUTION DASHBOARD
+         ===================================================== -->
+
+    <section id="dashboard"
+             class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Automation Execution Dashboard
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Summary of the sample automation execution dataset.
+
+            </p>
+
+
+            <div class="dashboard-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Total Test Cases
+                    </div>
+
+                    <div class="stat-value"
+                         id="totalTests">
+
+                        100
+
+                    </div>
+
+                    <div class="stat-description">
+                        Automated scenarios
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Passed
+                    </div>
+
+                    <div class="stat-value"
+                         id="passedTests">
+
+                        100
+
+                    </div>
+
+                    <div class="stat-description">
+                        Successful executions
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Failed
+                    </div>
+
+                    <div class="stat-value"
+                         id="failedTests">
+
+                        0
+
+                    </div>
+
+                    <div class="stat-description">
+                        Failed executions
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Pass Rate
+                    </div>
+
+                    <div class="stat-value"
+                         id="passRate">
+
+                        100%
+
+                    </div>
+
+                    <div class="stat-description">
+                        Execution success rate
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <div class="progress-header">
+
+                    <span>
+                        Automation Execution
+                    </span>
+
+                    <strong id="progressText">
+                        100%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"
+                         id="progressFill">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MODULE COVERAGE -->
+
+            <h3 style="margin-bottom:20px;">
+                Module Coverage
+            </h3>
+
+
+            <div class="module-grid">
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Finance
+                    </h4>
+
+                    <p>
+                        General Ledger, AP, AR, Fixed Assets
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Sales
+                    </h4>
+
+                    <p>
+                        Customers, Quotations, Orders, Invoices
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Production
+                    </h4>
+
+                    <p>
+                        Planning, Work Orders, BOM
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Human Resources
+                    </h4>
+
+                    <p>
+                        Employees, Attendance, Leave, Payroll
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Purchase
+                    </h4>
+
+                    <p>
+                        Vendors, Requisitions, Purchase Orders
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Inventory
+                    </h4>
+
+                    <p>
+                        Items, Stock, Warehouse, Stock Movement
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Logistics
+                    </h4>
+
+                    <p>
+                        Shipment, Delivery, Tracking
+                    </p>
+
+                </div>
+
+
+                <div class="module-card">
+
+                    <h4>
+                        Service
+                    </h4>
+
+                    <p>
+                        Requests, Tickets, Assignment, Status
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         AUTOMATION APPROACH
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Automation Approach
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Structured approach followed for developing and
+                executing automated test scenarios.
+
+            </p>
+
+
+            <div class="approach-grid">
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Requirement Analysis
+                    </h3>
+
+                    <p>
+                        Identify stable and repeatable scenarios
+                        suitable for automation.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Test Design
+                    </h3>
+
+                    <p>
+                        Design reusable automation scenarios and
+                        define required test data.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Framework Development
+                    </h3>
+
+                    <p>
+                        Develop scripts using Selenium WebDriver,
+                        Java, TestNG and POM.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Test Execution
+                    </h3>
+
+                    <p>
+                        Execute automated scenarios and validate
+                        expected results using assertions.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        05
+                    </span>
+
+                    <h3>
+                        Failure Analysis
+                    </h3>
+
+                    <p>
+                        Analyze failed tests and identify whether
+                        the cause is application or automation related.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <span class="step-number">
+                        06
+                    </span>
+
+                    <h3>
+                        Regression Execution
+                    </h3>
+
+                    <p>
+                        Re-execute stable automated scenarios after
+                        application changes.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FRAMEWORK
+         ===================================================== -->
+
+    <section id="framework"
+             class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Automation Framework
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Maintainable framework structure based on Selenium,
+                Java, TestNG and Page Object Model.
+
+            </p>
+
+
+            <div class="framework">
+
+
+                <div class="framework-box">
+
+                    <h3>
+                        Project Structure
+                    </h3>
+
+
+                    <div class="folder-tree">
+
+                        <div>
+                            <span>ERP-Automation/</span>
+                        </div>
+
+                        <div>
+                            ├── src/
+                        </div>
+
+                        <div>
+                            │ ├── main/java/
+                        </div>
+
+                        <div>
+                            │ │ ├── pages/
+                        </div>
+
+                        <div>
+                            │ │ ├── utilities/
+                        </div>
+
+                        <div>
+                            │ │ └── base/
+                        </div>
+
+                        <div>
+                            │
+                        </div>
+
+                        <div>
+                            │ └── test/java/
+                        </div>
+
+                        <div>
+                            │ &nbsp;&nbsp; ├── tests/
+                        </div>
+
+                        <div>
+                            │ &nbsp;&nbsp; └── testdata/
+                        </div>
+
+                        <div>
+                            │
+                        </div>
+
+                        <div>
+                            ├── testng.xml
+                        </div>
+
+                        <div>
+                            └── pom.xml
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="framework-box">
+
+                    <h3>
+                        Framework Components
+                    </h3>
+
+
+                    <p style="color:#999; font-size:14px;">
+
+                        <strong>Page Objects</strong><br>
+                        Stores page locators and reusable actions.
+
+                        <br><br>
+
+                        <strong>Test Classes</strong><br>
+                        Contains TestNG test methods and validations.
+
+                        <br><br>
+
+                        <strong>Utilities</strong><br>
+                        Provides reusable helper functions.
+
+                        <br><br>
+
+                        <strong>Test Data</strong><br>
+                        Stores data required for automated scenarios.
+
+                        <br><br>
+
+                        <strong>TestNG XML</strong><br>
+                        Controls test suite execution.
+
+                        <br><br>
+
+                        <strong>Maven</strong><br>
+                        Manages dependencies and project build.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TEST EXECUTION TABLE
+         ===================================================== -->
+
+    <section id="test-cases"
+             class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Automation Test Execution
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Sample execution records for automated ERP
+                web application scenarios.
+
+            </p>
+
+
+            <div class="table-controls">
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search test case, module or scenario..."
+                    >
+
+                </div>
+
+
+                <div class="filter-wrapper">
+
+                    <select
+                        id="statusFilter"
+                        class="filter-select"
+                    >
+
+                        <option value="All">
+                            All Status
+                        </option>
+
+                        <option value="Pass">
+                            Pass
+                        </option>
+
+                        <option value="Fail">
+                            Fail
+                        </option>
+
+                        <option value="Blocked">
+                            Blocked
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Test Case
+                            </th>
+
+                            <th>
+                                Module
+                            </th>
+
+                            <th>
+                                Submodule
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Scenario
+                            </th>
+
+                            <th>
+                                Test Data
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Defect
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="testTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONCLUSION
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Conclusion
+            </h2>
+
+
+            <div class="conclusion">
+
+                <p>
+
+                    The Selenium WebDriver automation framework
+                    provides a structured and maintainable approach
+                    for automating repeatable ERP web application
+                    scenarios. Java, Selenium WebDriver, TestNG,
+                    Page Object Model and Maven work together to
+                    support reusable automation components and
+                    regression execution.
+
+                    <br><br>
+
+                    The automation suite can be expanded with
+                    data-driven testing, parallel execution,
+                    reporting integration and CI/CD execution as
+                    the project evolves.
+
+                </p>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <a href="index.html"
+                   class="btn primary-btn">
+
+                    ← Return to Portfolio
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            ERP Web Application Automation Report
+
+            <br>
+
+            Prepared by
+            <span>
+                Sivamurugan G
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         Generates the 100 execution records and handles
+         search/filter/dashboard calculations.
+         ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           AUTOMATION TEST DATA
+
+           These are sample portfolio execution records.
+           ===================================================== */
+
+        const testData = [
+
+            ["EXEC-001","AUTO-001","Finance","General Ledger","Functional","Create ledger transaction","GL-1001","Pass","-"],
+            ["EXEC-002","AUTO-002","Finance","General Ledger","UI","Verify ledger form","Income transaction","Pass","-"],
+            ["EXEC-003","AUTO-003","Finance","General Ledger","Regression","Verify existing transaction","GL-1002","Pass","-"],
+            ["EXEC-004","AUTO-004","Finance","Accounts Payable","Functional","Process supplier payment","VEN-001 ₹20000","Pass","-"],
+            ["EXEC-005","AUTO-005","Finance","Accounts Payable","Integration","Verify payment updates balance","PAY-1001","Pass","-"],
+            ["EXEC-006","AUTO-006","Finance","Accounts Receivable","Functional","Record customer payment","CUST-001 ₹15000","Pass","-"],
+            ["EXEC-007","AUTO-007","Finance","Accounts Receivable","Regression","Verify outstanding amount","INV-1001","Pass","-"],
+            ["EXEC-008","AUTO-008","Finance","Fixed Assets","Functional","Create fixed asset","FA-1001 Machine","Pass","-"],
+            ["EXEC-009","AUTO-009","Finance","Fixed Assets","Integration","Verify depreciation update","FA-1001","Pass","-"],
+            ["EXEC-010","AUTO-010","Finance","Fixed Assets","UI","Verify asset form","Machine details","Pass","-"],
+
+            ["EXEC-011","AUTO-011","Sales","Customer Management","Functional","Create customer","CUST-001 ABC Ltd","Pass","-"],
+            ["EXEC-012","AUTO-012","Sales","Customer Management","UI","Verify customer form","Customer details","Pass","-"],
+            ["EXEC-013","AUTO-013","Sales","Customer Management","Regression","Search existing customer","CUST-002","Pass","-"],
+            ["EXEC-014","AUTO-014","Sales","Customer Management","Functional","Update customer","CUST-003 Phone","Pass","-"],
+            ["EXEC-015","AUTO-015","Sales","Quotation Management","Functional","Create quotation","QT-1001 ₹30000","Pass","-"],
+            ["EXEC-016","AUTO-016","Sales","Quotation Management","UI","Verify quotation fields","Product and discount","Pass","-"],
+            ["EXEC-017","AUTO-017","Sales","Quotation Management","Regression","Open existing quotation","QT-1002","Pass","-"],
+            ["EXEC-018","AUTO-018","Sales","Quotation Management","Integration","Convert quotation to order","QT-1003","Pass","-"],
+            ["EXEC-019","AUTO-019","Sales","Sales Order Management","Functional","Create sales order","SO-1001 Qty 10","Pass","-"],
+            ["EXEC-020","AUTO-020","Sales","Sales Order Management","UI","Verify order form","Customer and product","Pass","-"],
+            ["EXEC-021","AUTO-021","Sales","Sales Order Management","Regression","Verify existing order","SO-1002","Pass","-"],
+            ["EXEC-022","AUTO-022","Sales","Sales Order Management","Integration","Verify order updates inventory","SO-1003 Qty 5","Pass","-"],
+            ["EXEC-023","AUTO-023","Sales","Invoicing","Functional","Generate invoice","INV-1001 ₹25000","Pass","-"],
+            ["EXEC-024","AUTO-024","Sales","Invoicing","UI","Verify invoice fields","Invoice details","Pass","-"],
+            ["EXEC-025","AUTO-025","Sales","Invoicing","Regression","Verify existing invoice","INV-1002","Pass","-"],
+            ["EXEC-026","AUTO-026","Sales","Invoicing","Integration","Verify invoice updates receivable","INV-1003","Pass","-"],
+
+            ["EXEC-027","AUTO-027","Production","Production Planning","Functional","Create production plan","PP-1001 Qty 100","Pass","-"],
+            ["EXEC-028","AUTO-028","Production","Production Planning","UI","Verify planning fields","FG-1001 Qty 100","Pass","-"],
+            ["EXEC-029","AUTO-029","Production","Production Planning","Regression","Open existing plan","PP-1002","Pass","-"],
+            ["EXEC-030","AUTO-030","Production","Production Planning","Integration","Generate work order","PP-1003","Pass","-"],
+            ["EXEC-031","AUTO-031","Production","Work Orders","Functional","Create work order","WO-1001","Pass","-"],
+            ["EXEC-032","AUTO-032","Production","Work Orders","UI","Verify work order screen","WO-1002","Pass","-"],
+            ["EXEC-033","AUTO-033","Production","Work Orders","Regression","Verify existing work order","WO-1003","Pass","-"],
+            ["EXEC-034","AUTO-034","Production","Bill of Materials","Functional","Create BOM","BOM-1001","Pass","-"],
+            ["EXEC-035","AUTO-035","Production","Bill of Materials","Integration","Verify BOM used in production","FG-1001","Pass","-"],
+
+            ["EXEC-036","AUTO-036","Human Resources","Employee Management","Functional","Create employee","EMP-1001","Pass","-"],
+            ["EXEC-037","AUTO-037","Human Resources","Employee Management","UI","Verify employee form","Employee details","Pass","-"],
+            ["EXEC-038","AUTO-038","Human Resources","Employee Management","Regression","Search employee","EMP-1002","Pass","-"],
+            ["EXEC-039","AUTO-039","Human Resources","Attendance Management","Functional","Record attendance","EMP-1001 Present","Pass","-"],
+            ["EXEC-040","AUTO-040","Human Resources","Attendance Management","Regression","Verify attendance history","EMP-1001","Pass","-"],
+            ["EXEC-041","AUTO-041","Human Resources","Leave Management","Functional","Submit leave request","EMP-1001 2 Days","Pass","-"],
+            ["EXEC-042","AUTO-042","Human Resources","Leave Management","UI","Verify leave form","2 Days Casual Leave","Pass","-"],
+            ["EXEC-043","AUTO-043","Human Resources","Payroll","Functional","Process payroll","EMP-1001 ₹30000","Pass","-"],
+            ["EXEC-044","AUTO-044","Human Resources","Payroll","Integration","Verify payroll posting","PAY-1001","Pass","-"],
+
+            ["EXEC-045","AUTO-045","Purchase","Vendor Management","Functional","Create vendor","VEN-001 XYZ Suppliers","Pass","-"],
+            ["EXEC-046","AUTO-046","Purchase","Vendor Management","UI","Verify vendor form","Vendor details","Pass","-"],
+            ["EXEC-047","AUTO-047","Purchase","Vendor Management","Regression","Search existing vendor","VEN-002","Pass","-"],
+            ["EXEC-048","AUTO-048","Purchase","Purchase Requisition","Functional","Create requisition","PR-1001 Qty 20","Pass","-"],
+            ["EXEC-049","AUTO-049","Purchase","Purchase Requisition","Integration","Generate purchase order","PR-1002","Pass","-"],
+            ["EXEC-050","AUTO-050","Purchase","Purchase Order","Functional","Create purchase order","PO-1001 Qty 50","Pass","-"],
+            ["EXEC-051","AUTO-051","Purchase","Purchase Order","UI","Verify PO form","Vendor and product","Pass","-"],
+            ["EXEC-052","AUTO-052","Purchase","Purchase Order","Regression","Verify existing PO","PO-1002","Pass","-"],
+            ["EXEC-053","AUTO-053","Purchase","Purchase Order","Integration","Verify PO updates inventory","PO-1003 Qty 60","Pass","-"],
+            ["EXEC-054","AUTO-054","Purchase","Purchase Invoice","Functional","Create purchase invoice","PINV-1001 ₹40000","Pass","-"],
+            ["EXEC-055","AUTO-055","Purchase","Purchase Invoice","Regression","Verify existing invoice","PINV-1002","Pass","-"],
+
+            ["EXEC-056","AUTO-056","Inventory","Item Management","Functional","Create inventory item","PROD-1001 Laptop","Pass","-"],
+            ["EXEC-057","AUTO-057","Inventory","Item Management","UI","Verify item form","Product details","Pass","-"],
+            ["EXEC-058","AUTO-058","Inventory","Item Management","Regression","Search item","PROD-1002","Pass","-"],
+            ["EXEC-059","AUTO-059","Inventory","Stock Management","Functional","Update stock","PROD-1001 Qty 50","Pass","-"],
+            ["EXEC-060","AUTO-060","Inventory","Stock Management","Integration","Verify sales order reduces stock","SO-1004 Qty 10","Pass","-"],
+            ["EXEC-061","AUTO-061","Inventory","Warehouse Management","Functional","Assign item to warehouse","PROD-1001 WH-001","Pass","-"],
+            ["EXEC-062","AUTO-062","Inventory","Warehouse Management","UI","Verify warehouse selection","WH-001","Pass","-"],
+            ["EXEC-063","AUTO-063","Inventory","Stock Movement","Functional","Transfer stock","PROD-1001 Qty 10","Pass","-"],
+            ["EXEC-064","AUTO-064","Inventory","Stock Movement","Integration","Verify warehouse stock update","WH-001 to WH-002","Pass","-"],
+
+            ["EXEC-065","AUTO-065","Logistics","Shipment Management","Functional","Create shipment","SHP-1001","Pass","-"],
+            ["EXEC-066","AUTO-066","Logistics","Shipment Management","UI","Verify shipment form","SHP-1001","Pass","-"],
+            ["EXEC-067","AUTO-067","Logistics","Shipment Management","Regression","Verify existing shipment","SHP-1002","Pass","-"],
+            ["EXEC-068","AUTO-068","Logistics","Delivery Management","Functional","Create delivery","DEL-1001 Qty 10","Pass","-"],
+            ["EXEC-069","AUTO-069","Logistics","Delivery Management","Integration","Verify delivery updates order","SO-1001","Pass","-"],
+            ["EXEC-070","AUTO-070","Logistics","Transportation Management","Functional","Assign vehicle","SHP-1001 VEH-001","Pass","-"],
+            ["EXEC-071","AUTO-071","Logistics","Tracking","UI","Verify tracking screen","SHP-1001","Pass","-"],
+            ["EXEC-072","AUTO-072","Logistics","Tracking","Functional","Update shipment status","SHP-1001 Delivered","Pass","-"],
+
+            ["EXEC-073","AUTO-073","Service","Service Request","Functional","Create service request","SR-1001 CUST-001","Pass","-"],
+            ["EXEC-074","AUTO-074","Service","Service Request","UI","Verify service request form","Customer details","Pass","-"],
+            ["EXEC-075","AUTO-075","Service","Service Request","Regression","Verify existing request","SR-1002","Pass","-"],
+            ["EXEC-076","AUTO-076","Service","Ticket Management","Functional","Create service ticket","TKT-1001 High","Pass","-"],
+            ["EXEC-077","AUTO-077","Service","Ticket Management","UI","Verify ticket form","TKT-1001","Pass","-"],
+            ["EXEC-078","AUTO-078","Service","Ticket Management","Regression","Verify existing ticket","TKT-1002","Pass","-"],
+            ["EXEC-079","AUTO-079","Service","Service Assignment","Functional","Assign technician","TKT-1001 TECH-001","Pass","-"],
+            ["EXEC-080","AUTO-080","Service","Service Assignment","Integration","Verify technician assignment","TKT-1001","Pass","-"],
+            ["EXEC-081","AUTO-081","Service","Service Status Tracking","Functional","Update service status","TKT-1001 Resolved","Pass","-"],
+            ["EXEC-082","AUTO-082","Service","Service Status Tracking","UI","Verify status dropdown","Resolved","Pass","-"],
+            ["EXEC-083","AUTO-083","Service","Service Status Tracking","Regression","Verify resolved ticket","TKT-1002","Pass","-"],
+
+            ["EXEC-084","AUTO-084","Sales","Customer Management","Functional","Validate mandatory customer fields","Blank customer name","Pass","-"],
+            ["EXEC-085","AUTO-085","Sales","Quotation Management","Functional","Apply quotation discount","QT-1004 10%","Pass","-"],
+            ["EXEC-086","AUTO-086","Sales","Sales Order Management","Functional","Validate order quantity","Qty 0","Pass","-"],
+            ["EXEC-087","AUTO-087","Sales","Invoicing","Functional","Calculate invoice tax","INV-1004 18%","Pass","-"],
+            ["EXEC-088","AUTO-088","Inventory","Stock Management","Functional","Validate negative stock","Qty -5","Pass","-"],
+            ["EXEC-089","AUTO-089","Purchase","Purchase Order","Functional","Validate mandatory vendor","Vendor blank","Pass","-"],
+            ["EXEC-090","AUTO-090","Finance","Accounts Receivable","Functional","Validate invalid payment","Payment ₹0","Pass","-"],
+            ["EXEC-091","AUTO-091","Human Resources","Leave Management","Functional","Validate leave duration","0 Days","Pass","-"],
+            ["EXEC-092","AUTO-092","Production","Work Orders","Functional","Update work order status","WO-1005 Completed","Pass","-"],
+            ["EXEC-093","AUTO-093","Logistics","Tracking","Functional","Verify shipment tracking","SHP-1003 In Transit","Pass","-"],
+            ["EXEC-094","AUTO-094","Service","Ticket Management","Functional","Update ticket priority","TKT-1003 Medium","Pass","-"],
+            ["EXEC-095","AUTO-095","Finance","General Ledger","Regression","Verify financial report","Monthly report","Pass","-"],
+            ["EXEC-096","AUTO-096","Sales","Invoicing","Regression","Verify invoice search","INV-1005","Pass","-"],
+            ["EXEC-097","AUTO-097","Inventory","Stock Management","Regression","Verify stock after update","PROD-1003 Qty 25","Pass","-"],
+            ["EXEC-098","AUTO-098","Purchase","Purchase Order","Regression","Verify PO search","PO-1005","Pass","-"],
+            ["EXEC-099","AUTO-099","Service","Service Request","Regression","Verify service history","SR-1005","Pass","-"],
+            ["EXEC-100","AUTO-100","Integration","ERP Cross Module","Integration","Verify end-to-end order flow","Customer → Order → Inventory → Invoice","Pass","-"]
+
+        ];
+
+
+
+        /* =====================================================
+           GET HTML TABLE BODY
+           ===================================================== */
+
+        const tableBody =
+            document.getElementById("testTableBody");
+
+
+
+        /* =====================================================
+           DISPLAY TEST DATA
+           ===================================================== */
+
+        function displayTests(data) {
+
+            tableBody.innerHTML = "";
+
+
+            data.forEach(function(test) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                let statusClass =
+                    "status-pass";
+
+
+                if (test[7] === "Fail") {
+
+                    statusClass =
+                        "status-fail";
+
+                }
+
+
+                if (test[7] === "Blocked") {
+
+                    statusClass =
+                        "status-blocked";
+
+                }
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${test[0]}
+                    </td>
+
+                    <td>
+                        ${test[1]}
+                    </td>
+
+                    <td>
+                        ${test[2]}
+                    </td>
+
+                    <td>
+                        ${test[3]}
+                    </td>
+
+                    <td>
+                        ${test[4]}
+                    </td>
+
+                    <td>
+                        ${test[5]}
+                    </td>
+
+                    <td>
+                        ${test[6]}
+                    </td>
+
+                    <td>
+
+                        <span class="status ${statusClass}">
+                            ${test[7]}
+                        </span>
+
+                    </td>
+
+                    <td>
+                        ${test[8]}
+                    </td>
+
+                `;
+
+
+                tableBody.appendChild(row);
+
+            });
+
+        }
+
+
+
+        /* =====================================================
+           SEARCH + FILTER
+           ===================================================== */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+
+        const statusFilter =
+            document.getElementById("statusFilter");
+
+
+        function filterTests() {
+
+            const search =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const status =
+                statusFilter.value;
+
+
+            const filtered =
+                testData.filter(function(test) {
+
+
+                    const matchesSearch =
+                        test.join(" ")
+                            .toLowerCase()
+                            .includes(search);
+
+
+                    const matchesStatus =
+                        status === "All"
+                        ||
+                        test[7] === status;
+
+
+                    return (
+                        matchesSearch
+                        &&
+                        matchesStatus
+                    );
+
+                });
+
+
+            displayTests(filtered);
+
+        }
+
+
+        searchInput.addEventListener(
+            "input",
+            filterTests
+        );
+
+
+        statusFilter.addEventListener(
+            "change",
+            filterTests
+        );
+
+
+
+        /* =====================================================
+           DASHBOARD CALCULATIONS
+           ===================================================== */
+
+        function updateDashboard() {
+
+            const total =
+                testData.length;
+
+
+            const passed =
+                testData.filter(
+                    test => test[7] === "Pass"
+                ).length;
+
+
+            const failed =
+                testData.filter(
+                    test => test[7] === "Fail"
+                ).length;
+
+
+            const blocked =
+                testData.filter(
+                    test => test[7] === "Blocked"
+                ).length;
+
+
+            const passRate =
+                total === 0
+                ? 0
+                : Math.round(
+                    (passed / total) * 100
+                );
+
+
+            document.getElementById(
+                "totalTests"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "passedTests"
+            ).textContent = passed;
+
+
+            document.getElementById(
+                "failedTests"
+            ).textContent = failed;
+
+
+            document.getElementById(
+                "passRate"
+            ).textContent =
+                passRate + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                passRate + "%";
+
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                passRate + "%";
+
+        }
+
+
+
+        /* =====================================================
+           INITIALIZE PAGE
+           ===================================================== */
+
+        displayTests(testData);
+
+        updateDashboard();
+
+
+    </script>
+
+
+</body>
